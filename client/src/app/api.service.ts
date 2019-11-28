@@ -11,7 +11,7 @@ import { Observable,BehaviorSubject } from 'rxjs';
 })
 export class ApiService {
 
-  private SERVER_URL = "http://localhost:5000";
+  private SERVER_URL = "http://localhost:5000/api";
   private eventData = new BehaviorSubject<any>(null);
   public eventData$ = this.eventData.asObservable();
 

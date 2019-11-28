@@ -18,7 +18,7 @@ from .models import user
 from .db import db
 
 
-bp = Blueprint("auth", __name__, url_prefix="/auth")
+bp = Blueprint("auth", __name__, url_prefix="/api/auth")
 
 
 @bp.route("/login", methods=["POST"])

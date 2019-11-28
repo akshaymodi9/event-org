@@ -19,7 +19,7 @@ from .db import db
 from sqlalchemy import text
 
 
-bp = Blueprint("event", __name__)
+bp = Blueprint("event", __name__,url_prefix="/api")
 
 
 @bp.route("/<id>", methods=["GET"])
