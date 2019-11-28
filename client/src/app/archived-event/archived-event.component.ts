@@ -13,6 +13,7 @@ export class ArchivedEventComponent implements OnInit {
   public username: String = ''
   public archiveEvents = []
   public events = []
+  public searchText ='';
   constructor(private router: Router, private apiSerice: ApiService) {
     this.username = localStorage.getItem('name')
     this.apiSerice.eventData$.subscribe(res => this.events = res)

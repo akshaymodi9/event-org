@@ -26,6 +26,7 @@ export class EventsComponent implements OnInit {
   public userList = [];
   public checkedList = [];
   public placeHolder = 'Search for user'
+  public searchText = ''
 
   eventForm = new FormGroup({
     id: new FormControl(''),
