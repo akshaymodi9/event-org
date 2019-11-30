@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ApiService } from '../api.service';
 import { DatePipe } from '@angular/common'
+import { ToastrService } from 'ngx-toastr';
 
 declare var $: any;
 
@@ -38,7 +39,7 @@ export class EventsComponent implements OnInit {
 
   })
 
-  constructor(private router: Router, private apiService: ApiService) {
+  constructor(private router: Router, private apiService: ApiService,private toastr: ToastrService) {
 
     this.username = localStorage.getItem('name')
     this.id = localStorage.getItem('id')
@@ -48,6 +49,7 @@ export class EventsComponent implements OnInit {
       .subscribe(res => {
         this.allEvents = res
         // console.log("a",this.allEvents)
+        
         this.apiService.setEventData(this.allEvents)
       }, () => { }, () => {
         this.allEvents.map(data => {
@@ -74,6 +76,7 @@ export class EventsComponent implements OnInit {
     // console.log("ada",this.eventForm.value)
     this.apiService.addEvent(this.eventForm.value)
       .subscribe(res => {
+        this.toastr.success(res.msg);
         this.apiService.getEvents(this.id)
           .subscribe(res => {
             this.allEvents = res
@@ -100,6 +103,7 @@ export class EventsComponent implements OnInit {
     // console.log("asaaaa",event)
     this.apiService.deleteEvent(event.id)
       .subscribe(res => {
+        this.toastr.success(res.msg);
         this.apiService.getEvents(this.id)
           .subscribe(res => {
             this.allEvents = res
@@ -120,6 +124,7 @@ export class EventsComponent implements OnInit {
 
     this.apiService.editEvent(this.eventForm.value.id, this.eventForm.value)
       .subscribe(res => {
+        this.toastr.success(res.msg);
         this.apiService.getEvents(this.id)
           .subscribe(res => {
             this.allEvents = res
@@ -148,7 +153,7 @@ export class EventsComponent implements OnInit {
   }
   selectEvent(item) {
     // do something with selected item
-    if (!this.checkedList.includes(item)) {
+    if (!this.checkedList.some(data=>data.id == item.id)) {
       this.checkedList.push(item)
     }
   }
@@ -192,7 +197,7 @@ export class EventsComponent implements OnInit {
       owner_id: this.eventForm.value.owner_id
     }
     this.apiService.shareEvent(obj)
-    .subscribe(res=>console.log(res))
+    .subscribe(res=>this.toastr.success(res.msg))
     this.checkedList = []
     // this.auto.clear();
     $('#shareModal').modal("hide")

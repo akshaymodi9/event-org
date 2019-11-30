@@ -69,7 +69,7 @@
     margin-right: 5px;
     }
     
-    .login_btn, .sign_up_btn{
+    .login_btn{
     color: black;
     background-color: #FFC312;
     width: 100px;
@@ -79,13 +79,13 @@
     color: black;
     background-color: white;
     }
-    .text{
-        color: white;
-        margin-top: 10px;
-    }
     
     .links{
     color: white;
+    }
+    .text{
+        color: white;
+        
     }
     
     .links a{

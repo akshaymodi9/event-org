@@ -1,0 +1,57 @@
+<div class="login">
+    <div class="container">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Register User</h3>
+
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Name" #name>
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-envelope"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="email" #email>
+
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="password" #password>
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Mobile No" #number>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="button" value="Register" class="btn  login_btn"
+                                (click)="save(name.value,email.value,password.value,number.value)">
+                        </div>
+                        <div class="form-group">
+                            <span class="col-md-8 text"> Already Registered! <a [routerLink]="['/']">Login
+                                </a></span>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

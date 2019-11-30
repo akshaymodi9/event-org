@@ -11,7 +11,9 @@ import { Observable,BehaviorSubject } from 'rxjs';
 })
 export class ApiService {
 
-  private SERVER_URL = "http://54.80.71.136/api";
+  private SERVER_URL = "http://localhost:5000/api"
+
+  // private SERVER_URL = "http://54.80.71.136/api";
   private eventData = new BehaviorSubject<any>(null);
   public eventData$ = this.eventData.asObservable();
 
@@ -25,6 +27,11 @@ export class ApiService {
     }
     return this.httpClient.post(newUrl,obj);
     
+  }
+
+  public registerUser(data):Observable<any>{
+    let newUrl = `${this.SERVER_URL}/auth/register`
+    return this.httpClient.post(newUrl,data)
   }
 
   public addEvent(obj):Observable<any>{

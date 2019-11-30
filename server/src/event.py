@@ -68,9 +68,14 @@ def delete_event(id):
 def share_event():
     data = request.get_json()
     for i in data['user_id']:
-        data = shared_events(request.get_json(),i)
-        db.session.add(data)
-        db.session.commit()
+        existing_user = shared_events.query.filter_by(user_id = i,event_id=data['event_id']).first()
+
+        if (existing_user):
+            return jsonify({"msg": "Event already Shared with the user(s)"})
+        else:
+            data = shared_events(request.get_json(),i)
+            db.session.add(data)
+            db.session.commit()
         
     return jsonify({"msg": "Event Shared with the user(s)"})
 

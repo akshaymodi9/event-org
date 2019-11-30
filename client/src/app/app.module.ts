@@ -12,6 +12,9 @@ import { ArchivedEventComponent } from './archived-event/archived-event.componen
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
 import { SearchPipe } from './search.pipe';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { RegisterComponent } from './register/register.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -22,7 +25,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     LoginComponent,
     SharedEventComponent,
     ArchivedEventComponent,
-    SearchPipe
+    SearchPipe,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +34,9 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    AutocompleteLibModule
+    AutocompleteLibModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

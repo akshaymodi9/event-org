@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-shared-event',
@@ -12,7 +13,7 @@ export class SharedEventComponent implements OnInit {
   public username: String = ''
   public sharedEvents = []
   public id;
-  constructor(private router: Router, private apiSerice: ApiService) {
+  constructor(private router: Router, private apiSerice: ApiService,private toastr: ToastrService) {
     this.username = localStorage.getItem('name')
     this.id = parseInt(localStorage.getItem('id'))
 
@@ -28,6 +29,7 @@ export class SharedEventComponent implements OnInit {
   public revoke(event) {
     this.apiSerice.revokeSharedEvent(event.event_id, event.user_id)
       .subscribe(res => {
+        this.toastr.success(res.msg)
         this.apiSerice.getSharedEvents(this.id)
           .subscribe(res => this.sharedEvents = res)
       })
