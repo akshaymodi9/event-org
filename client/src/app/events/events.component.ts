@@ -82,6 +82,7 @@ export class EventsComponent implements OnInit {
             this.allEvents = res
             this.apiService.setEventData(this.allEvents)
           }, () => { }, () => {
+            this.events = []
             this.allEvents.map(data => {
               if (new Date(data.event_date) >= this.date) {
                 this.events.push(data)
