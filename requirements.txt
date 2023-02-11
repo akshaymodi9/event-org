@@ -13,7 +13,7 @@ Flask-SQLAlchemy==2.4.1
 graphviz==0.13
 imageio==2.6.1
 ipykernel==5.1.2
-ipython==7.8.0
+ipython==8.10.0
 ipython-genutils==0.2.0
 itsdangerous==1.1.0
 jedi==0.15.1
